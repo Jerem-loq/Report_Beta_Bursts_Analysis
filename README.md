@@ -1,0 +1,1 @@
+To edit this, use VS Code with the LaTeX Workshop extension. PDF compiles automatically on save.
