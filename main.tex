@@ -1,12 +1,78 @@
-\documentclass{article}
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[british]{babel}
+\usepackage{textgreek}
+
 \usepackage{graphicx}
 \graphicspath{ {./figures/} }
+\usepackage{caption}
+\captionsetup[figure]{labelfont=bf}
+\captionsetup[table]{labelfont=bf}
+\usepackage{float}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{adjustbox}
+% \usepackage{anysize}
+\usepackage{geometry}
+\geometry{top=1cm, bottom=2cm, left=2cm, right=2cm}
+
+% \usepackage{multicol}
+% \setlength\columnsep{18pt}
+\usepackage{soul}
+\usepackage[backend=biber, style=apa, doi=true, maxnames=99, sorting=nyt]{biblatex} % ieee, 
+\usepackage[breaklinks]{hyperref}
+\hypersetup{
+    hidelinks,
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=CadetBlue,
+    filecolor=CadetBlue,
+    urlcolor=blue,
+}
+\addbibresource{Biblio.bib}
+\nocite{*}
+\usepackage{csquotes} 
+\usepackage{nameref}
+\RequirePackage[l2tabu, orthodox]{nag}
+
+\defbibenvironment{bibliography}
+  {\hypertarget{bibstart}{} % Add anchor at bibliography start
+   \list{}
+     {\setlength{\leftmargin}{\bibhang}% Use the standard APA indent
+      \setlength{\itemindent}{-\leftmargin}%
+      \setlength{\labelwidth}{0pt}% APA has no labels
+      \setlength{\labelsep}{0pt}%
+      \setlength{\parsep}{\bibparsep}%
+      \setlength{\itemsep}{\bibitemsep}}
+      }
+  {\endlist}
+  {\hypertarget{cite.\thefield{entrykey}}{} % Per-entry anchor
+   \item}
+
+% \usepackage{amsmath}
+\usepackage{anyfontsize}
+\usepackage{setspace}
+\usepackage{scalefnt}
+\usepackage{textcomp}
+
+\usepackage{afterpage}
+\usepackage{indentfirst}
+\usepackage{enumitem}
+
+\newcommand{\customcite}[2]{%
+  \begingroup
+  \hypersetup{linkcolor=blue}%
+  \hyperlink{cite.#2}{\color{blue}#1}
+  \endgroup\unskip
+}
+
+\AtBeginBibliography{\small}
 
 \begin{document}
 Hello world!
 
-I am citing a source here \cite{test2025}
+I am citing a source here \customcite{test}{test2025}
 
-\bibliographystyle{plain}
-\bibliography{Biblio}
+\printbibliography
 \end{document}
